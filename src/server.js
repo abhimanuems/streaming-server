@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { spawn } from "child_process";
 import { Server } from "socket.io";
 import { fileURLToPath } from "url";
+import http from "http";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../.env") });
@@ -23,14 +24,24 @@ app.use(
 
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log("Application started on port ", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("Application started on port ", PORT);
+// });
 
-const io = new Server(WS_PORT, {
+// const io = new Server(WS_PORT, {
+//   cors: {
+//     origin: "*",
+//   },
+// });
+
+const httpServer = http.createServer();
+const io = new Server(httpServer, {
   cors: {
     origin: "*",
   },
+});
+httpServer.listen(PORT, () => {
+  console.log(`Socket.IO server is listening on port ${PORT}`);
 });
 
 io.use(verifyToken);
