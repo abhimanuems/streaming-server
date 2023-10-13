@@ -33,7 +33,7 @@ const io = new Server(WS_PORT, {
   },
 });
 
-// io.use(verifyToken);
+io.use(verifyToken);
 io.on("connection", (socket) => {
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
   const rtmpUrlfb = socket.handshake.query.rtmUrlFaceBook;
