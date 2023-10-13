@@ -44,7 +44,7 @@ httpServer.listen(PORT, () => {
   console.log(`Socket.IO server is listening on port ${PORT}`);
 });
 
-io.use(verifyToken);
+//io.use(verifyToken);
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
