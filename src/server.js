@@ -37,7 +37,7 @@ const WS_PORT = process.env.PORT;
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
+    origin: "https://livenex.online",
   },
 });
 httpServer.listen(PORT, () => {
