@@ -29,7 +29,7 @@ app.listen(PORT, () => {
 
 const io = new Server(WS_PORT, {
   cors: {
-    origin: "*",
+    origin: "https://livenex.online",
   },
 });
 
