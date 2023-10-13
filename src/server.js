@@ -29,13 +29,13 @@ app.listen(PORT, () => {
 
 const io = new Server(WS_PORT, {
   cors: {
-    origin: "https://livenex.online",
+    origin: "*",
   },
 });
 
 io.use(verifyToken);
 io.on("connection", (socket) => {
-  console.log("websocket connected ",socket.id);
+  console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
   const rtmpUrlfb = socket.handshake.query.rtmUrlFaceBook;
   const ffmpegInput = inputSettings.concat(
