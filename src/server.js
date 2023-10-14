@@ -42,6 +42,7 @@ const WS_PORT = process.env.PORT;
 
 const httpServer = http.createServer();
 const io = new Server(httpServer, {
+  cookie: true,
   cors: {
     origin: "https://livenex.online",
     methods: ["GET", "POST"],
