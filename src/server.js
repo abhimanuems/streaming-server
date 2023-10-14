@@ -45,7 +45,7 @@ const io = new Server(httpServer, {
   cookie: true,
   cors: {
     origin: "https://livenex.online",
-    methods: ["GET", "POST"],
+    methods: ["*"],
     credentials: true,
   },
 });
