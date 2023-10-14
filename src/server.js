@@ -44,6 +44,8 @@ const httpServer = http.createServer();
 const io = new Server(httpServer, {
   cors: {
     origin: "https://livenex.online",
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 httpServer.listen(PORT, () => {
