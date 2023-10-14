@@ -21,6 +21,7 @@ const verifyToken = (socket, next) => {
 };
 
 function extractJwtToken(cookieString) {
+  console.log("cookieString", cookieString);
   const cookies = cookieString.split("; ");
   const jwtCookie = cookies.find((cookie) => cookie.startsWith("jwt="));
 
