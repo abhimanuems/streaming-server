@@ -26,17 +26,7 @@ app.use(
 app.use(cookieParser());
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
-// app.listen(PORT, () => {
-//   console.log("Application started on port ", PORT);
-// });
 
-// app.get("/",(req,res)=>{
-//   res.send("server started");
-// })
-
-// app.get('/s',(req,res)=>{
-//   res.send("secure enabled");
-// })
 
 const io = new Server(PORT, {
   cookie: true,
@@ -47,20 +37,9 @@ const io = new Server(PORT, {
   },
 });
 
-// const httpServer = http.createServer();
-// const io = new Server(httpServer, {
-//   cookie: true,
-//   cors: {
-//     origin: "https://livenex.online",
-//     methods: ["*"],
-//     credentials: true,
-//   },
-// });
-// httpServer.listen(PORT, () => {
-//   console.log(`Socket.IO server is listening on port ${PORT}`);
-// });
 
-io.use(verifyToken);
+
+//io.use(verifyToken);
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
