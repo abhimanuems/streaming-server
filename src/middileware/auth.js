@@ -13,8 +13,8 @@ const verifyToken = (socket, next) => {
      jwt
     );
     const parsedCookies = socket.handshake.headers.cookie;
-    console.log("parsedCookies", parsedCookies);
-    const token = extractJwtToken(parsedCookies);
+    console.log("parsedCookies", jwt);
+    const token = extractJwtToken(jwt);
   
   if (!token) {
     return next(new Error("Authentication error"));
