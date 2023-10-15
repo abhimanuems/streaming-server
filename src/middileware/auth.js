@@ -6,7 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../.env") });
 const verifyToken = (socket, next) => {
-  const token = extractJwtToken(socket.handshake.headers.cookie);
+  try{
+    const token = extractJwtToken(socket.handshake.headers.cookie);
   if (!token) {
     return next(new Error("Authentication error"));
   }
@@ -18,11 +19,16 @@ const verifyToken = (socket, next) => {
     socket.user = decoded;
     next();
   });
+  }
+  catch(err){
+    console.error(err.message);
+  }
 };
 
 function extractJwtToken(cookieString) {
-  console.log("cookieString", cookieString);
-  const cookies = cookieString.split("; ");
+try{
+    console.log("cookieString", cookieString);
+  const cookies = cookieString?.split("; ");
   const jwtCookie = cookies.find((cookie) => cookie.startsWith("jwt="));
 
   if (jwtCookie) {
@@ -30,7 +36,11 @@ function extractJwtToken(cookieString) {
     return token;
   }
 
-  return null; 
+  return null;
+} 
+catch(err){
+  console.error(err.message);
+}
 }
 
 export default verifyToken;
