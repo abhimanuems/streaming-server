@@ -7,6 +7,7 @@ import { Server } from "socket.io";
 import { fileURLToPath } from "url";
 import http from "http";
 import cookieParser from "cookie-parser";
+import * as cookie from "cookie";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../.env") });
@@ -23,7 +24,6 @@ app.use(
   express.urlencoded({ limit: "200mb", extended: true, parameterLimit: 50000 })
 );
 app.use(cookieParser());
-
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
 // app.listen(PORT, () => {

@@ -11,7 +11,9 @@ const verifyToken = (socket, next) => {
       "socket.handshake.headers.cookie",
       socket.handshake.headers.cookie
     );
-    const token = extractJwtToken(socket.handshake.headers.cookie);
+    const parsedCookies = cookie.parse(socket.handshake.headers.cookie);
+    console.log("parsedCookies", parsedCookies);
+    const token = extractJwtToken(parsedCookies);
   
   if (!token) {
     return next(new Error("Authentication error"));
