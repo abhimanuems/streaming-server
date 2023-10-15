@@ -39,6 +39,7 @@ const WS_PORT = process.env.PORT;
 // })
 
 const io = new Server(PORT, {
+  cookie: true,
   cors: {
     origin: "https://livenex.online",
          methods: ["*"],
@@ -59,7 +60,7 @@ const io = new Server(PORT, {
 //   console.log(`Socket.IO server is listening on port ${PORT}`);
 // });
 
-//io.use(verifyToken);
+io.use(verifyToken);
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
