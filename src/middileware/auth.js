@@ -7,11 +7,12 @@ const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../.env") });
 const verifyToken = (socket, next) => {
   try{
+      const jwt = socket.handshake.query.jwt;
     console.log(
       "socket.handshake.headers.cookie",
-      socket.handshake.headers.cookie
+     jwt
     );
-    const parsedCookies = socket.request.headers.cookie;
+    const parsedCookies = socket.handshake.headers.cookie;
     console.log("parsedCookies", parsedCookies);
     const token = extractJwtToken(parsedCookies);
   
