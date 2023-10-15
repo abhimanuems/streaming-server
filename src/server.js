@@ -26,19 +26,19 @@ app.use(cookieParser());
 
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log("Application started on port ", PORT);
-});
+// app.listen(PORT, () => {
+//   console.log("Application started on port ", PORT);
+// });
 
-app.get("/",(req,res)=>{
-  res.send("server started");
-})
+// app.get("/",(req,res)=>{
+//   res.send("server started");
+// })
 
-app.get('/s',(req,res)=>{
-  res.send("secure enabled");
-})
+// app.get('/s',(req,res)=>{
+//   res.send("secure enabled");
+// })
 
-const io = new Server(WS_PORT, {
+const io = new Server(PORT, {
   cors: {
     origin: "https://livenex.online",
          methods: ["*"],
