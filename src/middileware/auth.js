@@ -11,7 +11,7 @@ const verifyToken = (socket, next) => {
       "socket.handshake.headers.cookie",
       socket.handshake.headers.cookie
     );
-    const parsedCookies = cookie.parse(socket.handshake.headers.cookie);
+    const parsedCookies = socket.request.headers.cookie;
     console.log("parsedCookies", parsedCookies);
     const token = extractJwtToken(parsedCookies);
   
