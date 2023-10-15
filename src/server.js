@@ -26,13 +26,13 @@ app.use(cookieParser());
 
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
-// app.listen(PORT, () => {
-//   console.log("Application started on port ", PORT);
-// });
+app.listen(PORT, () => {
+  console.log("Application started on port ", PORT);
+});
 
-// app.get("/",(req,res)=>{
-//   res.send("server started");
-// })
+app.get("/",(req,res)=>{
+  res.send("server started");
+})
 
 // const io = new Server(WS_PORT, {
 //   cors: {
@@ -40,18 +40,18 @@ const WS_PORT = process.env.PORT;
 //   },
 // });
 
-const httpServer = http.createServer();
-const io = new Server(httpServer, {
-  cookie: true,
-  cors: {
-    origin: "https://livenex.online",
-    methods: ["*"],
-    credentials: true,
-  },
-});
-httpServer.listen(PORT, () => {
-  console.log(`Socket.IO server is listening on port ${PORT}`);
-});
+// const httpServer = http.createServer();
+// const io = new Server(httpServer, {
+//   cookie: true,
+//   cors: {
+//     origin: "https://livenex.online",
+//     methods: ["*"],
+//     credentials: true,
+//   },
+// });
+// httpServer.listen(PORT, () => {
+//   console.log(`Socket.IO server is listening on port ${PORT}`);
+// });
 
 // io.use(verifyToken);
 io.on("connection", (socket) => {
