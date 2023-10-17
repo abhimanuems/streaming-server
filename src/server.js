@@ -46,6 +46,7 @@ const io = new Server(PORT, {
 
 
 io.use(verifyToken);
+
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;

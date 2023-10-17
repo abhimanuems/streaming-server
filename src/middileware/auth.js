@@ -6,7 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 dotenv.config({ path: path.join(__dirname, "../.env") });
 const verifyToken = (socket, next) => {
-  const token = extractJwtToken(socket.handshake.headers.cookie);
+   console.log("cookies from socket", socket.handshake.headers.cookie);
+  const token = extractJwtToken(socket.handshake.headers?.cookie);
   console.log("token is ",token);
   if (!token) {
     return next(new Error("Authentication error"));
