@@ -24,20 +24,28 @@ app.use(
 app.use(cookieParser());
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log("Application started on port ", PORT);
+});
 
-
-const io = new Server(PORT, {
-  cookie: true,
+const io = new Server(WS_PORT, {
   cors: {
     origin: "https://livenex.online",
-         methods: ["*"],
-         credentials: true,
   },
 });
 
+// const io = new Server(PORT, {
+//   cookie: true,
+//   cors: {
+//     origin: "https://livenex.online",
+//          methods: ["*"],
+//          credentials: true,
+//   },
+// });
 
 
-//io.use(verifyToken);
+
+io.use(verifyToken);
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
