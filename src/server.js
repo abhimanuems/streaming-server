@@ -13,7 +13,6 @@ import verifyToken from "../src/middileware/auth.js";
 import {
   youtubeSettings,
   facebookSettings,
-  TwitchRtmpSettings,
   inputSettings,
 } from "./services/ffmpeg.js";
 const app = express();
@@ -32,7 +31,6 @@ const io = new Server(PORT, {
     origin: "https://livenex.online",
   },
 });
-console.log("enter here");
 
 //io.use(verifyToken);
 
@@ -40,12 +38,9 @@ io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
   const rtmpUrlfb = socket.handshake.query.rtmUrlFaceBook;
-  const rtmpUrltwich = socket.handshake.query.rtmpUrlTwitch;
-  console.log("rtmpUrltwich", rtmpUrltwich);
   const ffmpegInput = inputSettings.concat(
     youtubeSettings(rtmpUrlYoutube),
-    facebookSettings(rtmpUrlfb),
-    TwitchRtmpSettings(rtmpUrltwich)
+    facebookSettings(rtmpUrlfb)
   );
   const ffmpeg = spawn("ffmpeg", ffmpegInput);
 
