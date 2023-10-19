@@ -40,6 +40,7 @@ io.on("connection", (socket) => {
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
   const rtmpUrlfb = socket.handshake.query.rtmUrlFaceBook;
   const rtmpUrltwich = socket.handshake.query.rtmpUrlTwitch;
+  console.log("rtmpUrltwich", rtmpUrltwich);
   const ffmpegInput = inputSettings.concat(
     youtubeSettings(rtmpUrlYoutube),
     facebookSettings(rtmpUrlfb),
