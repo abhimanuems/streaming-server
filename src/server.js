@@ -32,6 +32,7 @@ const io = new Server(PORT, {
     origin: "https://livenex.online",
   },
 });
+console.log("enter here");
 
 //io.use(verifyToken);
 
