@@ -76,7 +76,7 @@ export const facebookSettings = (facebook) => {
   } else return [];
 };
 
-const TwitchRtmpSettings = (customRTMP) => {
+export const  TwitchRtmpSettings = (customRTMP) => {
   if (customRTMP && customRTMP !== "undefined") {
     return [
       // video codec config: low latency, adaptive bitrate
