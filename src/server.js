@@ -15,7 +15,6 @@ import {
   facebookSettings,
   inputSettings,
 } from "./services/ffmpeg.js";
-import { profileEnd } from "console";
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "200mb" }));
@@ -23,19 +22,26 @@ app.use(
   express.urlencoded({ limit: "200mb", extended: true, parameterLimit: 50000 })
 );
 app.use(cookieParser());
-
-console.log(process.env);
 const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
+// app.listen(PORT, () => {
+//   console.log("Application started on port ", PORT);
+// });
 
+// const io = new Server(PORT, {
+//   cors: {
+//     origin: "https://livenex.online",
+//   },
+// });
 
 const io = new Server(PORT, {
+  cookie: true,
   cors: {
     origin: "https://livenex.online",
+         methods: ["*"],
+         credentials: true,
   },
 });
-
-console.log(io)
 
 //io.use(verifyToken);
 
