@@ -26,7 +26,7 @@ const PORT = process.env.PORTNUMBER;
 const WS_PORT = process.env.PORT;
 
 
-const io = new Server(PORT, {
+const io = new Server(WS_PORT, {
   cors: {
     origin: "https://livenex.online",
   },
