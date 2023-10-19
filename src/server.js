@@ -35,7 +35,7 @@ const io = new Server(PORT, {
   },
 });
 
-io.use(verifyToken);
+// io.use(verifyToken);
 
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
