@@ -35,10 +35,11 @@ const io = new Server(PORT, {
   },
 });
 
-// io.use(verifyToken);
+//io.use(verifyToken);
 
 io.on("connection", (socket) => {
   console.log(`socket connected to ${socket.id}`);
+  console.log("cookie is",socket.handshake.headers.cookie);
   const rtmpUrlYoutube = socket.handshake.query.rtmpUrlYoutube;
   const rtmpUrlfb = socket.handshake.query.rtmUrlFaceBook;
   const ffmpegInput = inputSettings.concat(
